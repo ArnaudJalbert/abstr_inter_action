@@ -7,9 +7,10 @@ const skecthKunzLines = (p) => {
   let x_points_amount;
   let y_points_amount;
   const POINTS_COEFFICIENT = 64;
+  let verticalPointsDistance;
+  let horizontalPointsDistance;
   let moved = false;
   let moved_count = 0;
-  let slider;
 
   function init_base_grid() {
     for (let i = 0; i < x_points_amount - 1; i++) {
@@ -75,8 +76,8 @@ const skecthKunzLines = (p) => {
     // reset ellipses array
     ellipses = [];
 
-    const ellipseWidth = p.width / 5;
-    const ellipseHeight = p.height / 3;
+    const ellipseWidth = p.width / 4;
+    const ellipseHeight = p.height / 2.2;
     const baseXPosition = p.width / 6;
     const baseYPosition = p.height / 4;
     p.ellipse(baseXPosition, baseYPosition, ellipseWidth, ellipseHeight);
@@ -155,6 +156,24 @@ const skecthKunzLines = (p) => {
     for (let i = 0; i < grid_points.length - 1; i++) {
       for (let j = 0; j < grid_points[i].length - 1; j++) {
         if (
+          grid_points[i][j].y < verticalPointsDistance ||
+          grid_points[i][j].y > p.height - verticalPointsDistance
+        ) {
+          continue;
+        }
+        if (
+          grid_points[i][j].x < horizontalPointsDistance ||
+          grid_points[i][j].x > p.width - horizontalPointsDistance
+        ) {
+          continue;
+        }
+        let direction = p.createVector(
+          grid_points[i][j].x,
+          grid_points[i][j].y,
+        );
+        direction.sub([ellipse.x, ellipse.y]);
+        direction.normalize();
+        if (
           isClose(
             grid_points[i][j].x,
             grid_points[i][j].y,
@@ -162,17 +181,50 @@ const skecthKunzLines = (p) => {
             ellipse.y,
             ellipse.width,
             ellipse.height,
-            0.3,
+            0.25,
           )
         ) {
-          let direction = p.createVector(
+          grid_points[i][j].x = grid_points[i][j].x + direction.x * 0.1;
+          grid_points[i][j].y = grid_points[i][j].y + direction.y * 0.1;
+        } else if (
+          isClose(
             grid_points[i][j].x,
             grid_points[i][j].y,
-          );
-          direction.sub([ellipse.x, ellipse.y]);
-          direction.normalize();
-          grid_points[i][j].x = grid_points[i][j].x + direction.x * 0.07;
-          grid_points[i][j].y = grid_points[i][j].y + direction.y * 0.07;
+            ellipse.x,
+            ellipse.y,
+            ellipse.width,
+            ellipse.height,
+            0.4,
+          )
+        ) {
+          grid_points[i][j].x = grid_points[i][j].x + direction.x * 0.05;
+          grid_points[i][j].y = grid_points[i][j].y + direction.y * 0.05;
+        } else if (
+          isClose(
+            grid_points[i][j].x,
+            grid_points[i][j].y,
+            ellipse.x,
+            ellipse.y,
+            ellipse.width,
+            ellipse.height,
+            0.5,
+          )
+        ) {
+          grid_points[i][j].x = grid_points[i][j].x + direction.x * 0.03;
+          grid_points[i][j].y = grid_points[i][j].y + direction.y * 0.03;
+        } else if (
+          isClose(
+            grid_points[i][j].x,
+            grid_points[i][j].y,
+            ellipse.x,
+            ellipse.y,
+            ellipse.width,
+            ellipse.height,
+            0.6,
+          )
+        ) {
+          grid_points[i][j].x = grid_points[i][j].x + direction.x * 0.02;
+          grid_points[i][j].y = grid_points[i][j].y + direction.y * 0.02;
         }
       }
     }
@@ -183,6 +235,8 @@ const skecthKunzLines = (p) => {
     x_points_amount = POINTS_COEFFICIENT;
     y_points_amount = Math.ceil(POINTS_COEFFICIENT * (p.height / p.width));
     grid_points = Array(x_points_amount);
+    verticalPointsDistance = p.height / x_points_amount;
+    horizontalPointsDistance = p.width / y_points_amount;
     init_base_grid();
   };
 
@@ -206,7 +260,7 @@ const skecthKunzLines = (p) => {
       // limit the movement
       moved_count += 1;
     }
-    if (moved_count > 500) {
+    if (moved_count > 300) {
       moved = true;
     }
   };
