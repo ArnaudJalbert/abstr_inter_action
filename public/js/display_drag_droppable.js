@@ -22,6 +22,27 @@ async function setDragDrop(collectionName) {
   // setArtworkImages(artworkMatches, leftContainerBox, rightContainerBox)
 }
 
+function shuffle(array) {
+  // https://bost.ocks.org/mike/shuffle/
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
 function setImagesAndDropBoxes(artworkMatches, rightContainerBox) {
   for (const artwork of artworkMatches) {
     // Set the container for the image and the drop box
@@ -29,6 +50,12 @@ function setImagesAndDropBoxes(artworkMatches, rightContainerBox) {
     imageBoxContainer.className = "image-box-container";
     // Add it to the main container
     rightContainerBox.appendChild(imageBoxContainer);
+
+    // Set the tile of the artwork
+    const artworkTitleElement = document.createElement("div");
+    artworkTitleElement.innerHTML = artwork.artworkName;
+    artworkTitleElement.className = "artwork-title";
+    imageBoxContainer.appendChild(artworkTitleElement);
 
     // Creating the image element
     const image = document.createElement("img");
@@ -44,7 +71,7 @@ function setImagesAndDropBoxes(artworkMatches, rightContainerBox) {
 }
 function setDescriptionCards(artworkMatches, containerBox) {
   // Loop over all artwork descriptions and create the components
-  for (const artwork of artworkMatches) {
+  for (const artwork of shuffle(artworkMatches)) {
     // Create the HTML element and text
     const descriptionElement = document.createElement("div");
     const descriptionNode = document.createTextNode(artwork.description);

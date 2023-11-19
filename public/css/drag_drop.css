@@ -33,7 +33,7 @@
   /* border */
   border-radius: 4px;
   /* margin + padding */
-  margin: 20px 30px;
+  margin: 10px 10px;
   padding: 15px;
   /* size */
   min-height: 50px;
@@ -49,8 +49,17 @@
   margin: 10px 10px;
 }
 
+.artwork-title {
+  justify-content: center;
+  text-align: center;
+  font-size: large;
+}
+
 .image-card {
+  align-items: center;
+  justify-content: center;
   max-width: 100%;
+  max-height: 260px;
 }
 
 .description-drop-box {
