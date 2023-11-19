@@ -1,0 +1,62 @@
+.drag-drop-container {
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left,
+.right {
+  width: 600px;
+  min-height: 500px;
+  margin: 20px;
+  border: 2px dashed #111;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 3;
+}
+
+.description-card {
+  /* display settings*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* colors */
+  background: #f3ac22;
+  color: whitesmoke;
+  /* border */
+  border-radius: 4px;
+  /* margin + padding */
+  margin: 20px 30px;
+  padding: 15px;
+  /* size */
+  min-height: 50px;
+  /* interaction */
+  cursor: grab;
+}
+
+.image-box-container {
+  /* size */
+  display: inline-block;
+  max-width: 47%;
+  max-height: 50%;
+  margin: 10px 10px;
+}
+
+.image-card {
+  max-width: 100%;
+}
+
+.description-drop-box {
+  border: black dashed;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}

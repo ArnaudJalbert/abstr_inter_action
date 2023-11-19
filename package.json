@@ -1,0 +1,22 @@
+{
+  "name": "abstr_inter_action",
+  "version": "1.0.0",
+  "description": "understanding abstract art through interaction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArnaudJalbert/abstr_inter_action.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArnaudJalbert/abstr_inter_action/issues"
+  },
+  "homepage": "https://github.com/ArnaudJalbert/abstr_inter_action#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
