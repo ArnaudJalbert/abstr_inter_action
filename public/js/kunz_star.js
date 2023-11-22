@@ -1,15 +1,17 @@
 const sketchKunzStar = (p) => {
   const mode = p._userNode;
-  const heightAndWidth = 400;
+  const heightAndWidth = 1000;
   let centerPoint;
   let angle = 0;
 
   const lowerLimit = 1 / 20;
   const upperLimit = 1 - lowerLimit;
-  const middleLowerLimit = 7 / 20;
+  const middleLowerLimit = 8 / 20;
   const middleUpperLimit = 1 - middleLowerLimit;
 
   function drawStar(angle) {
+    p.strokeWeight(1)
+    p.stroke(0)
     let starPoints = [];
     // top point -> 0
     starPoints.push(p.createVector(p.width / 2, p.height * lowerLimit));
@@ -156,7 +158,7 @@ const sketchKunzStar = (p) => {
   };
 
   p.draw = () => {
-    p.background(220);
+    p.background(223, 214, 178);
     if (mode === "kunz-star-one-shape") {
       drawStar(0);
     }
@@ -188,9 +190,14 @@ const sketchKunzStar = (p) => {
       }
     }
     if (mode === "kunz-star") {
+      p.fill(226, 219, 183,255)
+      p.strokeWeight(50)
+      p.stroke(189, 202, 181)
+      p.ellipse(centerPoint.x, centerPoint.y, p.width * upperLimit)
       for (let i = 0; i < 360; i += 9) {
         drawStar(i);
       }
+
     }
   };
 };
