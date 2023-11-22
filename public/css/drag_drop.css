@@ -9,13 +9,12 @@
 .left,
 .right {
   width: 600px;
-  min-height: 500px;
   margin: 20px;
   border: 2px dashed #111;
 }
 
 .left {
-  flex: 2;
+  flex: 1;
 }
 
 .right {
@@ -51,7 +50,7 @@
 
 .artwork-title {
   justify-content: center;
-  text-align: center;
+  text-align: left;
   font-size: large;
 }
 
@@ -67,5 +66,11 @@
   min-height: 100px;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
+  width: 100%;
+}
+
+#send-artwork-matches{
+  justify-content: center;
+  align-content: center;
+  font-size: xxx-large;
 }
