@@ -151,6 +151,14 @@ const sketchKunzStar = (p) => {
     p.pop();
   }
 
+  function animateStar(currentAngle, cutAngle){
+    for(let i = 0 ; i < currentAngle; i++){
+      if (i % cutAngle === 0){
+        drawStar(i);
+      }
+    }
+
+  }
   p.setup = () => {
     p.angleMode(p.DEGREES);
     p.createCanvas(heightAndWidth, heightAndWidth);
@@ -164,40 +172,53 @@ const sketchKunzStar = (p) => {
     }
     if (mode === "kunz-star-rotation") {
       drawStar(angle);
-      angle++;
     }
     if (mode === "kunz-star-two-shapes") {
-      for (let i = 0; i < 360; i += 45) {
-        drawStar(i);
+      drawStar(0);
+      if (angle <= 90){
+        drawStar(angle);
       }
+      animateStar(angle, 45);
     }
     if (mode === "kunz-star-multiple-shapes") {
-      for (let i = 0; i < 360; i += 9) {
-        drawStar(i);
+      drawStar(0);
+      if (angle <= 90){
+        drawStar(angle);
       }
+      animateStar(angle, 9);
     }
     if (mode === "kunz-star-cross-lines") {
       drawStar(0);
     }
     if (mode === "kunz-star-cross-lines-two-shapes") {
-      for (let i = 0; i < 360; i += 45) {
-        drawStar(i);
+      drawStar(0);
+      if (angle <= 360){
+        drawStar(angle);
       }
+      animateStar(angle, 45);
     }
     if (mode === "kunz-star-cross-lines-four-shapes") {
-      for (let i = 0; i < 360; i += 30) {
-        drawStar(i);
+      drawStar(0);
+      if (angle <= 360){
+        drawStar(angle);
       }
+      animateStar(angle, 30);
     }
     if (mode === "kunz-star") {
       p.fill(226, 219, 183,255)
       p.strokeWeight(50)
       p.stroke(189, 202, 181)
       p.ellipse(centerPoint.x, centerPoint.y, p.width * upperLimit)
-      for (let i = 0; i < 360; i += 9) {
-        drawStar(i);
+      drawStar(0);
+      if (angle <= 360){
+        drawStar(angle);
       }
+      animateStar(angle, 9);
 
+    }
+    angle+= 0.5;
+    if (angle > 360){
+      angle = 0;
     }
   };
 };
