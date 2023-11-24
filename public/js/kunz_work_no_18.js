@@ -10,9 +10,9 @@ function sketchWorkNo18(p) {
   let mainAnimatedAngle = 0;
 
   const arrowTop = p.createVector(10 / 20, 2 / 20);
-  const arrowBottomRight = p.createVector(18 / 20, 18 / 20);
+  const arrowBottomRight = p.createVector(17 / 20, 17 / 20);
   const arrowBottom = p.createVector(10 / 20, 14 / 20);
-  const arrowBottomLeft = p.createVector(2 / 20, 18 / 20);
+  const arrowBottomLeft = p.createVector(3 / 20, 17 / 20);
 
   const diamondTop = p.createVector(10 / 20, 6 / 20);
   const diamondRight = p.createVector(18 / 20, 10 / 20);
@@ -72,10 +72,10 @@ function sketchWorkNo18(p) {
       if (addThickLine) {
         if (i === 0) {
           p.stroke(237, 161, 30);
-          p.strokeWeight(10 / scaling);
+          p.strokeWeight(4 / scaling);
         } else if (i === 8) {
           p.stroke(252, 80, 80);
-          p.strokeWeight(5 / scaling);
+          p.strokeWeight(2 / scaling);
         } else {
           p.strokeWeight(1 / scaling);
         }
@@ -145,7 +145,7 @@ function sketchWorkNo18(p) {
       shapeTwoAngle += 1;
     }
     if (divided) {
-      drawDivided(drawArrow, shapeTwoAngle, 10, 0.1);
+      drawDivided(drawArrow, shapeTwoAngle, 14, 0.075);
     } else {
       drawArrow(shapeTwoAngle);
     }
@@ -158,7 +158,7 @@ function sketchWorkNo18(p) {
   };
 
   p.draw = () => {
-    p.background(223, 214, 178);
+    p.background(232);
     if (mode === "shape-1") {
       drawArrow(0);
     }
@@ -185,16 +185,11 @@ function sketchWorkNo18(p) {
       drawDivided(drawDiamond, 0, 10, 0.1);
     }
     if (mode === "main-shape-divided") {
-      drawDivided(drawArrow, 0, 14, 0.075);
-      drawDivided(drawArrow, 180, 14, 0.075);
-      drawDivided(drawDiamond, 0, 14, 0.075);
-    }
-    if (mode === "main-shape-divided") {
       drawDivided(drawArrow, 0, 14, 0.075, false);
-      drawDivided(drawArrow, 180, 14, 0.075, false);
+      animateShapeTwo(true);
       drawDivided(drawDiamond, 0, 14, 0.075, false);
     }
-    if (mode === "main-shape-divided-animated") {
+    if (mode === "main-shape-divided-animated" || mode === "main-shape-divided-animated-comparison") {
       mainAnimatedAngle += 0.25;
       drawDivided(drawArrow, mainAnimatedAngle, 14, 0.075, true);
       drawDivided(drawArrow, 180 + mainAnimatedAngle, 14, 0.075, true);
@@ -214,4 +209,9 @@ let mainShapeDivided = new p5(sketchWorkNo18, "main-shape-divided");
 let mainShapeDividedAnimated = new p5(
   sketchWorkNo18,
   "main-shape-divided-animated",
+);
+
+let mainShapeDividedAnimatedComparison = new p5(
+    sketchWorkNo18,
+    "main-shape-divided-animated-comparison",
 );

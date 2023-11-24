@@ -10,8 +10,8 @@ const sketchKunzStar = (p) => {
   const middleUpperLimit = 1 - middleLowerLimit;
 
   function drawStar(angle) {
-    p.strokeWeight(1)
-    p.stroke(0)
+    p.strokeWeight(2);
+    p.stroke(211, 77, 71);
     let starPoints = [];
     // top point -> 0
     starPoints.push(p.createVector(p.width / 2, p.height * lowerLimit));
@@ -63,6 +63,7 @@ const sketchKunzStar = (p) => {
 
     if (
       mode === "kunz-star" ||
+      mode === "kunz-star-comparison" ||
       mode === "kunz-star-cross-lines" ||
       mode === "kunz-star-cross-lines-two-shapes" ||
       mode === "kunz-star-cross-lines-four-shapes"
@@ -151,13 +152,12 @@ const sketchKunzStar = (p) => {
     p.pop();
   }
 
-  function animateStar(currentAngle, cutAngle){
-    for(let i = 0 ; i < currentAngle; i++){
-      if (i % cutAngle === 0){
+  function animateStar(currentAngle, cutAngle) {
+    for (let i = 0; i < currentAngle; i++) {
+      if (i % cutAngle === 0) {
         drawStar(i);
       }
     }
-
   }
   p.setup = () => {
     p.angleMode(p.DEGREES);
@@ -166,7 +166,7 @@ const sketchKunzStar = (p) => {
   };
 
   p.draw = () => {
-    p.background(223, 214, 178);
+    p.background(232);
     if (mode === "kunz-star-one-shape") {
       drawStar(0);
     }
@@ -175,15 +175,21 @@ const sketchKunzStar = (p) => {
     }
     if (mode === "kunz-star-two-shapes") {
       drawStar(0);
-      if (angle <= 90){
+      if (angle <= 90) {
         drawStar(angle);
+      }
+      if (angle > 180) {
+        angle = 0;
       }
       animateStar(angle, 45);
     }
     if (mode === "kunz-star-multiple-shapes") {
       drawStar(0);
-      if (angle <= 90){
+      if (angle <= 90) {
         drawStar(angle);
+      }
+      if (angle > 180) {
+        angle = 0;
       }
       animateStar(angle, 9);
     }
@@ -192,32 +198,31 @@ const sketchKunzStar = (p) => {
     }
     if (mode === "kunz-star-cross-lines-two-shapes") {
       drawStar(0);
-      if (angle <= 360){
+      if (angle <= 360) {
         drawStar(angle);
       }
       animateStar(angle, 45);
     }
     if (mode === "kunz-star-cross-lines-four-shapes") {
       drawStar(0);
-      if (angle <= 360){
+      if (angle <= 360) {
         drawStar(angle);
       }
       animateStar(angle, 30);
     }
-    if (mode === "kunz-star") {
-      p.fill(226, 219, 183,255)
-      p.strokeWeight(50)
-      p.stroke(189, 202, 181)
-      p.ellipse(centerPoint.x, centerPoint.y, p.width * upperLimit)
+    if (mode === "kunz-star" || mode === "kunz-star-comparison") {
+      p.fill(226, 219, 183, 255);
+      p.strokeWeight(50);
+      p.stroke(189, 202, 181);
+      p.ellipse(centerPoint.x, centerPoint.y, p.width * upperLimit);
       drawStar(0);
-      if (angle <= 360){
+      if (angle <= 360) {
         drawStar(angle);
       }
       animateStar(angle, 9);
-
     }
-    angle+= 0.5;
-    if (angle > 360){
+    angle += 0.5;
+    if (angle > 360) {
       angle = 0;
     }
   };
@@ -247,3 +252,5 @@ let kunzLinesCrossLineFourShapes = new p5(
 );
 
 let kunzLines = new p5(sketchKunzStar, "kunz-star");
+
+let kunzLinesComparison = new p5(sketchKunzStar, "kunz-star-comparison");

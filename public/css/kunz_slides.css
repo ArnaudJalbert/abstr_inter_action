@@ -1,0 +1,62 @@
+* {
+  background-color: #e8e8e8;
+}
+
+img {
+
+  height: 100%;
+}
+.pages {
+  display: flex;
+  align-items: center;
+  font-family: "Helvetica Neue", "sans-serif";
+  max-height: 90%;
+}
+
+.description {
+  /*width and height*/
+  width: 40%;
+  /*text*/
+  font-size: 60px;
+  /*alignment*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  display: flex;
+}
+
+.artwork{
+  width: 45%;
+
+}
+
+.kunz-canvas {
+  margin: 20px;
+  display: flex;
+}
+
+.navigation{
+  display: flex;
+  align-items: center;
+  font-family: "Helvetica Neue", "sans-serif";
+  height: 100%;
+}
+
+#previous, #next{
+  /*width and height*/
+  width: 50%;
+  margin-left: 10%;
+  margin-right: 10%;
+  /*text*/
+  font-size: 60px;
+  /*alignment*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+#previous:hover, #next:hover{
+  background-color: #f3ac22;
+}

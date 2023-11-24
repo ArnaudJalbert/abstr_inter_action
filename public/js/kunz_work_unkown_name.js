@@ -1,6 +1,6 @@
 function skecthUnknownWork(p) {
   const mode = p._userNode;
-  const heightAndWidth = 1000;
+  const heightAndWidth = window.innerHeight * 0.8;
   let centerPoint;
 
   // angles animation
@@ -58,6 +58,12 @@ function skecthUnknownWork(p) {
     p.translate(-centerPoint.x, -centerPoint.y);
 
     for (let i = 0; i <= linesAmount; i++) {
+      if (color.g === 0 && i === linesAmount){
+        p.strokeWeight(3);
+      }
+      else {
+        p.strokeWeight(1)
+      }
       p.stroke(color.r, color.g, color.b);
       p.line(
         startPoint.x,
@@ -86,7 +92,10 @@ function skecthUnknownWork(p) {
     } else {
       shape(linesAmount, 270);
     }
-    if (animationAngle === 500) {
+    if (animationAngle < 360) {
+      shape(linesAmount, animationAngle);
+    }
+    if (animationAngle === 400) {
       animationAngle = 0;
     }
   }
@@ -133,7 +142,8 @@ function skecthUnknownWork(p) {
 
   p.setup = () => {
     p.angleMode(p.DEGREES);
-    p.createCanvas(heightAndWidth, heightAndWidth);
+    let canvas = p.createCanvas(heightAndWidth, heightAndWidth);
+    canvas.class("right");
     centerPoint = p.createVector(p.width / 2, p.height / 2);
     // blue pyramids starting points
     bluePyramidTopStart = p.createVector(
@@ -147,7 +157,7 @@ function skecthUnknownWork(p) {
   };
 
   p.draw = () => {
-    p.background(223, 214, 178);
+    p.background(232);
     if (mode === "first-pyramid") {
       drawPyramid(centerPoint, bottomLine, 1, redPyramidColor, 0);
     }
@@ -167,18 +177,21 @@ function skecthUnknownWork(p) {
       animatePyramid(drawBluePyramid, bluePyramidsLinesAmount);
     }
     if (mode === "third-pyramid") {
+      drawBluePyramid(1, 0);
       drawBrownPyramid(1, 0);
     }
     if (mode === "third-pyramid-square") {
+      animatePyramid(drawBluePyramid, 1);
       animatePyramid(drawBrownPyramid, 1);
     }
     if (mode === "third-pyramid-square-multlines") {
+      animatePyramid(drawBluePyramid, bluePyramidsLinesAmount);
       animatePyramid(drawBrownPyramid, bluePyramidsLinesAmount);
     }
-    if (mode === "final-shape"){
-        animatePyramid(drawRedPyramid, redPyramidsLinesAmount);
-        animatePyramid(drawBluePyramid, redPyramidsLinesAmount);
-        animatePyramid(drawBrownPyramid, redPyramidsLinesAmount);
+    if (mode === "final-shape" || mode === "final-shape-comparison") {
+      animatePyramid(drawRedPyramid, redPyramidsLinesAmount);
+      animatePyramid(drawBluePyramid, redPyramidsLinesAmount);
+      animatePyramid(drawBrownPyramid, redPyramidsLinesAmount);
     }
     animationAngle++;
   };
@@ -194,3 +207,4 @@ new p5(skecthUnknownWork, "third-pyramid");
 new p5(skecthUnknownWork, "third-pyramid-square");
 new p5(skecthUnknownWork, "third-pyramid-square-multlines");
 new p5(skecthUnknownWork, "final-shape");
+new p5(skecthUnknownWork, "final-shape-comparison");

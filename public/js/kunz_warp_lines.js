@@ -244,7 +244,7 @@ const skecthKunzLines = (p) => {
     // check
     if (!moved) {
       // background of the canvas
-      p.background(200);
+      p.background(232);
 
       // draw the strokes between the points
       draw_grid();
