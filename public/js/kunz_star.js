@@ -1,6 +1,6 @@
 const sketchKunzStar = (p) => {
   const mode = p._userNode;
-  const heightAndWidth = 1000;
+  const heightAndWidth = window.innerHeight * 0.8;
   let centerPoint;
   let angle = 0;
 
@@ -10,7 +10,7 @@ const sketchKunzStar = (p) => {
   const middleUpperLimit = 1 - middleLowerLimit;
 
   function drawStar(angle) {
-    p.strokeWeight(2);
+    p.strokeWeight(1);
     p.stroke(211, 77, 71);
     let starPoints = [];
     // top point -> 0
@@ -90,6 +90,19 @@ const sketchKunzStar = (p) => {
         starPoints[0].y,
         starPoints[3].x,
         starPoints[3].y,
+      );
+
+      p.line(
+          starPoints[1].x,
+          starPoints[1].y,
+          starPoints[5].x,
+          starPoints[5].y,
+      );
+      p.line(
+          starPoints[7].x,
+          starPoints[7].y,
+          starPoints[3].x,
+          starPoints[3].y,
       );
 
       // bottom to top left line
@@ -212,7 +225,7 @@ const sketchKunzStar = (p) => {
     }
     if (mode === "kunz-star" || mode === "kunz-star-comparison") {
       p.fill(226, 219, 183, 255);
-      p.strokeWeight(50);
+      p.strokeWeight(35);
       p.stroke(189, 202, 181);
       p.ellipse(centerPoint.x, centerPoint.y, p.width * upperLimit);
       drawStar(0);

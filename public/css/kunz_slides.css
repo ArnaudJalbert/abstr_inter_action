@@ -10,7 +10,7 @@ img {
   display: flex;
   align-items: center;
   font-family: "Helvetica Neue", "sans-serif";
-  max-height: 90%;
+  max-height: 80%;
 }
 
 .description {

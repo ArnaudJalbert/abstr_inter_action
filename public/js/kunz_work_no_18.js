@@ -1,6 +1,6 @@
 function sketchWorkNo18(p) {
   const mode = p._userNode;
-  const heightAndWidth = 1000;
+  const heightAndWidth = window.innerHeight * 0.8;
   let centerPoint;
 
   // shape two animation
