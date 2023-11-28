@@ -5,6 +5,9 @@ window.onload = (event) => {
   setDragDrop("ten-largest-collection");
   setDragDrop("atom-series-part-a");
   setDragDrop("atom-series-part-b");
+  setDragDrop("atom-series-part-c");
+  setDragDrop("atom-series-part-d");
+  setDragDrop("atom-series-part-e");
 };
 
 async function setDragDrop(collectionName) {

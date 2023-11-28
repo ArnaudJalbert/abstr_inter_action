@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kunz Star</title>
+    <link rel="stylesheet" href="css/kunz_slides.css" />
+  </head>
+  <script src="js/p5.min.js"></script>
+  <body>
+    <div class="pages">
+      <div class="description">
+        We can first start by a simple triangle shape from which we've removed
+        the bottom.
+      </div>
+      <div id="kunz-star-one-shape" class="kunz-canvas"></div>
+      <div class="description">
+        We can rotate that shape along the center point of the canvas.
+      </div>
+      <div id="kunz-star-rotation" class="kunz-canvas"></div>
+      <div class="description">
+        Then at each 45 degrees, we can duplicate that shape.
+      </div>
+      <div id="kunz-star-two-shapes" class="kunz-canvas"></div>
+      <div class="description">
+        We can exaggerate the multiplication, so it happens every 9 degrees,
+        creating a complex star.
+      </div>
+      <div id="kunz-star-multiple-shapes" class="kunz-canvas"></div>
+      <div class="description">
+        Taking the initial shape, we can add lines inside the shape.
+      </div>
+      <div id="kunz-star-cross-lines" class="kunz-canvas"></div>
+      <div class="description">
+        We can repeat the same 90 degrees multiplication as earlier but with the
+        more complex shape.
+      </div>
+      <div id="kunz-star-cross-lines-two-shapes" class="kunz-canvas"></div>
+      <div class="description">
+        The more we duplicate the shape, the more details we're starting to see
+        inside the shape.
+      </div>
+      <div id="kunz-star-cross-lines-four-shapes" class="kunz-canvas"></div>
+      <div class="description">
+        With generous duplication, very interesting patterns start to appear out
+        of the initial shape.
+      </div>
+      <div id="kunz-star" class="kunz-canvas"></div>
+      <div class="description artwork">
+        <img
+          width="90%"
+          src="https://oaktreereview.com/wp-content/uploads/2021/09/Emma-Kunz-untitled-77-x-77-cm.jpg"
+          alt="Missing Kunz's Work"
+        />
+      </div>
+      <div id="kunz-star-comparison" class="kunz-canvas"></div>
+    </div>
+    <div class="navigation">
+      <div id="previous">previous</div>
+      <div id="next">next</div>
+    </div>
+  </body>
+  <script src="js/kunz_star.js"></script>
+  <script src="js/slide_pages.js"></script>
+</html>
