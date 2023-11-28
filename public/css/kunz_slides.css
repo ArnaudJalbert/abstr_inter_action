@@ -60,3 +60,21 @@ img {
 #previous:hover, #next:hover{
   background-color: #f3ac22;
 }
+
+#comeback{
+  top:0;
+  right:0;
+  position: static;
+  font-family: "Helvetica Neue", "sans-serif";
+}
+
+#comeback:hover{
+  cursor: pointer;
+}
+
+#fullscreen {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  font-family: "Helvetica Neue", "sans-serif";
+}

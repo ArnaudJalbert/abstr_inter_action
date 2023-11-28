@@ -1,3 +1,4 @@
+
 const canvases = document.querySelectorAll(".pages > .kunz-canvas");
 const descriptions = document.querySelectorAll(".pages > .description");
 
@@ -24,12 +25,11 @@ document.getElementById("next").addEventListener("click", () => {
   if (currentPage < descriptions.length - 1) {
     descriptions[currentPage].style.display = "none";
     descriptions[currentPage + 1].style.display = "flex";
-    descriptionChanged = true
+    descriptionChanged = true;
   }
-  if (descriptionChanged || canvasChanged){
+  if (descriptionChanged || canvasChanged) {
     currentPage++;
   }
-
 });
 
 document.getElementById("previous").addEventListener("click", () => {
@@ -47,3 +47,7 @@ document.getElementById("previous").addEventListener("click", () => {
     currentPage--;
   }
 });
+
+document.getElementById("comeback").addEventListener("click", () => {
+  window.location = 'index.html'
+})

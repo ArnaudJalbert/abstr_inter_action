@@ -6,7 +6,10 @@
     <link rel="stylesheet" href="css/kunz_slides.css" />
   </head>
   <script src="js/p5.min.js"></script>
+
   <body>
+    <div id="fullscreen">x</div>
+    <div id="comeback">back</div>
     <div class="pages">
       <div class="description">
         We can first start with a simple arrow shape.
@@ -29,9 +32,13 @@
         times and scale it down at each iteration.
       </div>
       <div id="shape-1-divided" class="kunz-canvas"></div>
-      <div class="description">We can apply the same modification to the duplicated arrow.</div>
+      <div class="description">
+        We can apply the same modification to the duplicated arrow.
+      </div>
       <div id="shape-2-divided" class="kunz-canvas"></div>
-      <div class="description">We can apply the same modification to the diamond.</div>
+      <div class="description">
+        We can apply the same modification to the diamond.
+      </div>
       <div id="shape-3-divided" class="kunz-canvas"></div>
       <div class="description">Let's then blend them all together again.</div>
       <div id="main-shape-divided" class="kunz-canvas"></div>
@@ -56,4 +63,5 @@
   </body>
   <script src="js/kunz_work_no_18.js"></script>
   <script src="js/slide_pages.js"></script>
+  <script src="js/openFullscreen.js"></script>
 </html>
