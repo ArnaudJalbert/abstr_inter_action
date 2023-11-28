@@ -1,7 +1,7 @@
 const express = require("express");
 const matches = require("./business/create_matches");
 // Connection information
-const port = 6969;
+const port = 3000;
 const indexPath = "./public/index.html";
 // Set up express App
 const app = express();
